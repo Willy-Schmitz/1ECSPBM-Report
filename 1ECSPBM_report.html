@@ -6,10 +6,10 @@
 <title>1ECSPBM · Weekly Ticket Report</title>
 <style>
 :root {
-  --sap-shell:      #354a5e;
+  --sap-shell:      #00144A;
   --sap-blue:       #0070f2;
   --sap-blue-lt:    #e8f3ff;
-  --sap-bg:         #f5f6f7;
+  --sap-bg:         #A9B4BE;
   --sap-card:       #ffffff;
   --sap-border:     #e5e5e5;
   --sap-text:       #32363a;
@@ -79,6 +79,19 @@ body {
   flex-direction: column;
   gap: 20px;
 }
+.top-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+.top-row .card {
+  display: flex;
+  flex-direction: column;
+}
+.top-row .card .card-body {
+  flex: 1;
+}
 
 /* ── CARD ──────────────────────────────────────── */
 .card {
@@ -94,7 +107,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.card-title { font-size: 16px; font-weight: 600; }
+.card-title { font-size: 22px; font-weight: 600; }
 .card-body  { padding: 16px 18px; }
 
 /* ── COVER ─────────────────────────────────────── */
@@ -268,7 +281,7 @@ body {
 
 /* Filter summary banner */
 .filter-banner {
-  background: var(--sap-blue-lt);
+  background: #D1EFFF;
   border: 1px solid #c2daf9;
   border-radius: 6px;
   padding: 12px 18px;
@@ -298,23 +311,23 @@ body {
 }
 .kpi-tile {
   flex: 1;
-  min-width: 140px;
-  background: var(--sap-bg);
+  min-width: 120px;
+  background: #D1EFFF;
   border: 1px solid var(--sap-border);
   border-radius: 6px;
-  padding: 12px 16px;
+  padding: 5px 12px;
   text-align: center;
 }
 .kpi-value {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--sap-blue);
   line-height: 1.1;
 }
 .kpi-label {
-  font-size: 11.5px;
+  font-size: 11px;
   color: var(--sap-text2);
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 /* Delay toggle */
@@ -366,6 +379,35 @@ body {
 }
 
 /* Pivot table */
+.table-wrap-outer {
+  position: relative;
+}
+.table-scroll-top {
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 20px;
+  margin-bottom: 4px;
+  border-radius: 10px;
+  background: #e8f0fe;
+}
+.table-scroll-top::-webkit-scrollbar {
+  height: 20px;
+}
+.table-scroll-top::-webkit-scrollbar-track {
+  background: #dde8f8;
+  border-radius: 10px;
+}
+.table-scroll-top::-webkit-scrollbar-thumb {
+  background: #0070f2;
+  border-radius: 10px;
+  border: 3px solid #dde8f8;
+}
+.table-scroll-top::-webkit-scrollbar-thumb:hover {
+  background: #0055c8;
+}
+.table-scroll-top-inner {
+  height: 1px;
+}
 .table-wrap {
   overflow-x: auto;
   overflow-y: auto;
@@ -400,13 +442,9 @@ body {
 
 .pivot-table td.col-key,  .pivot-table th.col-key  { position:sticky; left:0;    z-index:5; min-width:130px; }
 .pivot-table td.col-sum,  .pivot-table th.col-sum  { position:sticky; left:130px;z-index:5; min-width:300px; max-width:300px; }
-.pivot-table td.col-stat, .pivot-table th.col-stat { position:sticky; left:430px;z-index:5; min-width:110px; }
-.pivot-table td.col-ru,   .pivot-table th.col-ru   { position:sticky; left:540px;z-index:5; min-width:170px; max-width:170px; }
-.pivot-table td.col-req,  .pivot-table th.col-req  { position:sticky; left:710px;z-index:5; min-width:170px; max-width:170px; }
-.pivot-table td.col-del,  .pivot-table th.col-del  { position:sticky; left:880px;z-index:5; min-width:60px; }
+.pivot-table td.col-del,  .pivot-table th.col-del  { position:sticky; left:430px;z-index:5; min-width:60px; }
 .pivot-table th.col-key, .pivot-table th.col-sum,
-.pivot-table th.col-stat,.pivot-table th.col-ru,
-.pivot-table th.col-req, .pivot-table th.col-del  { z-index:15; }
+.pivot-table th.col-del  { z-index:15; }
 .pivot-table td {
   padding: 5px 8px;
   border: 1px solid #dde;
@@ -416,16 +454,10 @@ body {
 }
 .pivot-table td.col-key,
 .pivot-table td.col-sum,
-.pivot-table td.col-stat,
-.pivot-table td.col-ru,
-.pivot-table td.col-req,
 .pivot-table td.col-del { background: #fff; }
 tr:nth-child(even) td                    { background: #f7f9fc; }
 tr:nth-child(even) td.col-key,
 tr:nth-child(even) td.col-sum,
-tr:nth-child(even) td.col-stat,
-tr:nth-child(even) td.col-ru,
-tr:nth-child(even) td.col-req,
 tr:nth-child(even) td.col-del           { background: #f7f9fc; }
 tr.group-row td {
   background: var(--fill-group) !important;
@@ -492,6 +524,8 @@ td.rtcd-cw      { text-align:center; font-size:11px; color:var(--sap-text3); min
 
 <div class="page-body">
 
+<div class="top-row">
+
   <!-- COVER -->
   <div class="card">
     <div class="card-header">
@@ -508,6 +542,20 @@ td.rtcd-cw      { text-align:center; font-size:11px; color:var(--sap-text3); min
       <p class="cover-desc">
         Use the filters below to narrow the view, then press <strong>Show Results</strong>.
       </p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;padding-top:10px;font-size:12.5px;color:var(--sap-text2);align-items:center">
+        <div style="display:flex;align-items:center;gap:6px">
+          <div style="width:24px;height:13px;background:var(--fill-first);border-radius:2px;border:1px solid rgba(0,0,0,.1)"></div>
+          First recorded RTCD
+        </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <div style="width:24px;height:13px;background:var(--fill-changed);border-radius:2px;border:1px solid rgba(0,0,0,.1)"></div>
+          RTCD changed &mdash; delay (counted in <strong style="margin-left:2px">#delays</strong>)
+        </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <div style="width:24px;height:13px;background:#fff;border-radius:2px;border:1px solid #ccc"></div>
+          No change (cell blank)
+        </div>
+      </div>
     </div>
   </div>
 
@@ -540,9 +588,26 @@ td.rtcd-cw      { text-align:center; font-size:11px; color:var(--sap-text3); min
           <div class="filter-group">
             <div class="filter-label">Roadmap Relevance</div>
             <div class="btn-group" id="roadmapBtns">
-              <button class="btn-toggle active" data-rm="all">All</button>
-              <button class="btn-toggle" data-rm="external">External</button>
+              <button class="btn-toggle" data-rm="all">All</button>
+              <button class="btn-toggle active" data-rm="external">External</button>
               <button class="btn-toggle" data-rm="internal">Internal</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <div class="filter-label">Status</div>
+            <div class="multiselect-wrap">
+              <button class="multiselect-btn" id="statusPanelBtn">
+                <span id="statusLabel">All statuses selected</span>
+                <span class="arrow">&#9660;</span>
+              </button>
+              <div class="multiselect-panel" id="statusPanel">
+                <input class="multiselect-search" id="statusSearch" type="text" placeholder="Search statuses…">
+                <div class="multiselect-actions">
+                  <a id="statusSelectAll">Select all</a>
+                  <a id="statusDeselectAll">Deselect all</a>
+                </div>
+                <div id="statusList"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -565,23 +630,6 @@ td.rtcd-cw      { text-align:center; font-size:11px; color:var(--sap-text3); min
               </div>
             </div>
           </div>
-          <div class="filter-group">
-            <div class="filter-label">Requesting Unit</div>
-            <div class="multiselect-wrap">
-              <button class="multiselect-btn" id="reqPanelBtn">
-                <span id="reqLabel">All units selected</span>
-                <span class="arrow">&#9660;</span>
-              </button>
-              <div class="multiselect-panel" id="reqPanel">
-                <input class="multiselect-search" id="reqSearch" type="text" placeholder="Search units…">
-                <div class="multiselect-actions">
-                  <a id="reqSelectAll">Select all</a>
-                  <a id="reqDeselectAll">Deselect all</a>
-                </div>
-                <div id="reqList"></div>
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -593,25 +641,12 @@ td.rtcd-cw      { text-align:center; font-size:11px; color:var(--sap-text3); min
     </div>
   </div>
 
+</div><!-- /.top-row -->
+
   <!-- RESULTS SECTION (hidden until Show Results clicked) -->
   <div id="resultsSection">
 
     <div class="filter-banner" id="filterBanner"></div>
-
-    <div style="display:flex;gap:20px;flex-wrap:wrap;padding:10px 4px;font-size:13px;color:var(--sap-text2);align-items:center">
-      <div style="display:flex;align-items:center;gap:7px">
-        <div style="width:28px;height:16px;background:var(--fill-first);border-radius:2px;border:1px solid rgba(0,0,0,.1)"></div>
-        First recorded RTCD for this ticket
-      </div>
-      <div style="display:flex;align-items:center;gap:7px">
-        <div style="width:28px;height:16px;background:var(--fill-changed);border-radius:2px;border:1px solid rgba(0,0,0,.1)"></div>
-        RTCD changed &mdash; delay detected (counted in <strong style="margin-left:3px">#delays</strong>)
-      </div>
-      <div style="display:flex;align-items:center;gap:7px">
-        <div style="width:28px;height:16px;background:#fff;border-radius:2px;border:1px solid #ccc"></div>
-        No change from previous week (cell left blank)
-      </div>
-    </div>
 
     <div class="card">
       <div class="card-header">
@@ -627,7 +662,7 @@ td.rtcd-cw      { text-align:center; font-size:11px; color:var(--sap-text3); min
           <button class="btn-export" id="exportBtn">&#8595; Export CSV</button>
         </div>
       </div>
-      <div class="card-body" style="padding-bottom:12px">
+      <div class="card-body" style="padding:8px 18px">
         <div class="kpi-row">
           <div class="kpi-tile"><div class="kpi-value" id="kpiTotal">—</div><div class="kpi-label">Tickets in View</div></div>
           <div class="kpi-tile"><div class="kpi-value" id="kpiDelayed">—</div><div class="kpi-label">Tickets with Delays</div></div>
@@ -637,11 +672,16 @@ td.rtcd-cw      { text-align:center; font-size:11px; color:var(--sap-text3); min
         </div>
       </div>
       <div class="result-info" id="resultInfo"></div>
-      <div class="table-wrap">
-        <table class="pivot-table">
-          <thead id="pivotHead"></thead>
-          <tbody id="pivotBody"></tbody>
-        </table>
+      <div class="table-wrap-outer">
+        <div class="table-scroll-top" id="tableScrollTop">
+          <div class="table-scroll-top-inner" id="tableScrollTopInner"></div>
+        </div>
+        <div class="table-wrap" id="tableWrap">
+          <table class="pivot-table">
+            <thead id="pivotHead"></thead>
+            <tbody id="pivotBody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -2777,9 +2817,9 @@ function statusColor(s) {
 
 let selectedYears    = new Set();
 let selectedQuarters = new Set(['all']);
-let selectedRoadmap  = 'all';
+let selectedRoadmap  = 'external';
+let selectedStatuses = new Set();
 let selectedRU       = new Set();
-let selectedReqU     = new Set();
 
 // ── Init ──────────────────────────────────────────────────────────────────
 
@@ -2793,28 +2833,40 @@ function init() {
   document.getElementById('resetBtn').addEventListener('click', resetFilter);
   document.getElementById('delayToggle').addEventListener('change', function() { onDelayToggle(this.checked); });
   document.getElementById('exportBtn').addEventListener('click', exportCSV);
+  document.getElementById('statusPanelBtn').addEventListener('click', function() { toggleDropdown('statusPanel'); });
+  document.getElementById('statusSearch').addEventListener('input', function() { filterOptions('statusList', this.value); });
+  document.getElementById('statusSelectAll').addEventListener('click', function() { selectAll('statusList'); });
+  document.getElementById('statusDeselectAll').addEventListener('click', function() { deselectAll('statusList'); });
   document.getElementById('ruPanelBtn').addEventListener('click', function() { toggleDropdown('ruPanel'); });
-  document.getElementById('reqPanelBtn').addEventListener('click', function() { toggleDropdown('reqPanel'); });
   document.getElementById('ruSearch').addEventListener('input', function() { filterOptions('ruList', this.value); });
-  document.getElementById('reqSearch').addEventListener('input', function() { filterOptions('reqList', this.value); });
   document.getElementById('ruSelectAll').addEventListener('click', function() { selectAll('ruList'); });
   document.getElementById('ruDeselectAll').addEventListener('click', function() { deselectAll('ruList'); });
-  document.getElementById('reqSelectAll').addEventListener('click', function() { selectAll('reqList'); });
-  document.getElementById('reqDeselectAll').addEventListener('click', function() { deselectAll('reqList'); });
+
+  const currentYear = now.getFullYear();
 
   const years   = [...new Set(REPORT_CW_LABELS.map(l => cwParts(l).year))].sort();
   const yearDiv = document.getElementById('yearBtns');
   years.forEach(y => {
     const btn = document.createElement('button');
-    btn.className   = 'btn-toggle active';
+    btn.className   = 'btn-toggle' + (y === currentYear ? ' active' : '');
     btn.dataset.y   = y;
     btn.textContent = y;
     btn.onclick     = () => toggleYear(y, btn);
     yearDiv.appendChild(btn);
-    selectedYears.add(y);
+    if (y === currentYear) selectedYears.add(y);
   });
+  if (selectedYears.size === 0) {
+    const lastYear = years[years.length - 1];
+    if (lastYear) {
+      selectedYears.add(lastYear);
+      yearDiv.querySelector(`[data-y="${lastYear}"]`).classList.add('active');
+    }
+  }
 
+  // Quarter default = All
+  selectedQuarters = new Set(['all']);
   document.getElementById('quarterBtns').querySelectorAll('.btn-toggle').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.q === 'all');
     btn.onclick = () => toggleQuarter(btn.dataset.q, btn);
   });
 
@@ -2828,19 +2880,34 @@ function init() {
     };
   });
 
-  const ruAll  = [...new Set(REPORT_TICKETS.map(t => t.receivingUnit).filter(Boolean))].sort();
-  const reqAll = [...new Set(REPORT_TICKETS.map(t => t.requestingUnit).filter(Boolean))].sort();
-  buildMultiselect('ruList',  ruAll,  selectedRU,   'ruLabel',  ruAll.length);
-  buildMultiselect('reqList', reqAll, selectedReqU, 'reqLabel', reqAll.length);
+  const statusAll = [...new Set(REPORT_TICKETS.map(t => t.status).filter(Boolean))].sort();
+  buildMultiselect('statusList', statusAll, selectedStatuses, 'statusLabel', statusAll.length);
+
+  const ruAll = [
+    "CAE – Application Innovation Engineering",
+    "CAE – Chief Security Office",
+    "CAE – Cloud Architect and Advisory",
+    "CAE – Cloud Data Center",
+    "CAE – Data Management",
+    "CAE – Service Engineering",
+    "CAE – Technology & Architecture",
+    "CLE - AI Foundation",
+    "GCE TEC",
+    "GCO - Backup Engineering",
+  ];
+  buildMultiselect('ruList', ruAll, selectedRU, 'ruLabel', ruAll.length);
 
   document.addEventListener('click', e => {
-    ['ruPanel','reqPanel'].forEach(id => {
+    ['statusPanel', 'ruPanel'].forEach(id => {
       const panel = document.getElementById(id);
       if (panel && panel.classList.contains('open') &&
           !panel.closest('.multiselect-wrap').contains(e.target))
         panel.classList.remove('open');
     });
   });
+
+  // Show delays only is on by default
+  showDelaysOnly = true;
 
   // Auto-run on load so results are visible immediately
   submitFilter();
@@ -2849,7 +2916,12 @@ function init() {
 // ── Dirty / Reset ─────────────────────────────────────────────────────────
 
 function getDefaultYears() {
-  return new Set([...new Set(REPORT_CW_LABELS.map(l => cwParts(l).year))].sort());
+  const now = new Date();
+  return new Set([now.getFullYear()]);
+}
+
+function getDefaultQuarter() {
+  return 'all';
 }
 
 function isDirty() {
@@ -2857,11 +2929,22 @@ function isDirty() {
   if (selectedYears.size !== def.size) return true;
   for (const y of def) if (!selectedYears.has(y)) return true;
   if (!selectedQuarters.has('all') || selectedQuarters.size !== 1) return true;
-  if (selectedRoadmap !== 'all') return true;
-  const ruAll  = [...new Set(REPORT_TICKETS.map(t => t.receivingUnit).filter(Boolean))];
-  const reqAll = [...new Set(REPORT_TICKETS.map(t => t.requestingUnit).filter(Boolean))];
-  if (selectedRU.size  !== ruAll.length)  return true;
-  if (selectedReqU.size !== reqAll.length) return true;
+  if (selectedRoadmap !== 'external') return true;
+  const statusAll = [...new Set(REPORT_TICKETS.map(t => t.status).filter(Boolean))];
+  if (selectedStatuses.size !== statusAll.length) return true;
+  const ruAll = [
+    "CAE – Application Innovation Engineering",
+    "CAE – Chief Security Office",
+    "CAE – Cloud Architect and Advisory",
+    "CAE – Cloud Data Center",
+    "CAE – Data Management",
+    "CAE – Service Engineering",
+    "CAE – Technology & Architecture",
+    "CLE - AI Foundation",
+    "GCE TEC",
+    "GCO - Backup Engineering",
+  ];
+  if (selectedRU.size !== ruAll.length) return true;
   return false;
 }
 
@@ -2896,19 +2979,23 @@ function toggleQuarter(q, btn) {
 
 function resetFilter() {
   if (!isDirty()) return;
+  const currentYear = new Date().getFullYear();
   selectedYears.clear();
   document.getElementById('yearBtns').querySelectorAll('.btn-toggle').forEach(btn => {
-    btn.classList.add('active'); selectedYears.add(+btn.dataset.y);
+    const y = +btn.dataset.y;
+    btn.classList.toggle('active', y === currentYear);
+    if (y === currentYear) selectedYears.add(y);
   });
   selectedQuarters = new Set(['all']);
   document.getElementById('quarterBtns').querySelectorAll('.btn-toggle').forEach(b => {
     b.classList.toggle('active', b.dataset.q === 'all');
   });
-  selectedRoadmap = 'all';
+  selectedRoadmap = 'external';
   document.getElementById('roadmapBtns').querySelectorAll('.btn-toggle').forEach(b => {
-    b.classList.toggle('active', b.dataset.rm === 'all');
+    b.classList.toggle('active', b.dataset.rm === 'external');
   });
-  selectAll('ruList'); selectAll('reqList');
+  selectAll('statusList');
+  selectAll('ruList');
 }
 
 // ── Multiselect ───────────────────────────────────────────────────────────
@@ -2933,14 +3020,14 @@ function buildMultiselect(listId, values, selectedSet, labelId, totalCount) {
 }
 
 function updateMultiselectLabel(labelId, selected, total) {
-  document.getElementById(labelId).textContent =
-    selected === total ? 'All units selected' : `${selected} unit(s) selected`;
+  const isStatus = labelId === 'statusLabel';
+  document.getElementById(labelId).textContent = selected === total
+    ? (isStatus ? 'All statuses selected' : 'All units selected')
+    : `${selected} ${isStatus ? 'status(es)' : 'unit(s)'} selected`;
 }
 
 function toggleDropdown(panelId) {
   const panel = document.getElementById(panelId);
-  const other = panelId === 'ruPanel' ? 'reqPanel' : 'ruPanel';
-  document.getElementById(other).classList.remove('open');
   panel.classList.toggle('open');
 }
 
@@ -2953,27 +3040,31 @@ function filterOptions(listId, query) {
 
 function selectAll(listId) {
   const isRU = listId === 'ruList';
-  const set   = isRU ? selectedRU : selectedReqU;
+  const set   = isRU ? selectedRU : selectedStatuses;
   document.getElementById(listId).querySelectorAll('input[type=checkbox]').forEach(cb => {
     cb.checked = true; set.add(cb.value);
   });
-  const total = isRU
-    ? [...new Set(REPORT_TICKETS.map(t => t.receivingUnit).filter(Boolean))].length
-    : [...new Set(REPORT_TICKETS.map(t => t.requestingUnit).filter(Boolean))].length;
-  updateMultiselectLabel(isRU ? 'ruLabel' : 'reqLabel', set.size, total);
+  if (isRU) {
+    updateMultiselectLabel('ruLabel', set.size, 10);
+  } else {
+    const total = [...new Set(REPORT_TICKETS.map(t => t.status).filter(Boolean))].length;
+    updateMultiselectLabel('statusLabel', set.size, total);
+  }
   updateResetBtn();
 }
 
 function deselectAll(listId) {
   const isRU = listId === 'ruList';
-  const set   = isRU ? selectedRU : selectedReqU;
+  const set   = isRU ? selectedRU : selectedStatuses;
   document.getElementById(listId).querySelectorAll('input[type=checkbox]').forEach(cb => {
     cb.checked = false; set.delete(cb.value);
   });
-  const total = isRU
-    ? [...new Set(REPORT_TICKETS.map(t => t.receivingUnit).filter(Boolean))].length
-    : [...new Set(REPORT_TICKETS.map(t => t.requestingUnit).filter(Boolean))].length;
-  updateMultiselectLabel(isRU ? 'ruLabel' : 'reqLabel', set.size, total);
+  if (isRU) {
+    updateMultiselectLabel('ruLabel', set.size, 10);
+  } else {
+    const total = [...new Set(REPORT_TICKETS.map(t => t.status).filter(Boolean))].length;
+    updateMultiselectLabel('statusLabel', set.size, total);
+  }
   updateResetBtn();
 }
 
@@ -2985,20 +3076,19 @@ function submitFilter() {
     const p = cwParts(label);
     if (!p) return false;
     if (!selectedYears.has(p.year)) return false;
-    if (!selectedQuarters.has('all') && !selectedQuarters.has(weekToQuarter(p.week))) return false;
+    if (!selectedQuarters.has('all') && !selectedQuarters.has(String(weekToQuarter(p.week)))) return false;
     return true;
   });
 
-  const allRUValues  = [...new Set(REPORT_TICKETS.map(t => t.receivingUnit).filter(Boolean))];
-  const allReqValues = [...new Set(REPORT_TICKETS.map(t => t.requestingUnit).filter(Boolean))];
-  const allRU  = selectedRU.size  === allRUValues.length;
-  const allReq = selectedReqU.size === allReqValues.length;
+  const allStatusValues = [...new Set(REPORT_TICKETS.map(t => t.status).filter(Boolean))];
+  const allSt = selectedStatuses.size === allStatusValues.length;
+  const allRU = selectedRU.size === 10;
 
   const tickets = REPORT_TICKETS.filter(t => {
     if (selectedRoadmap === 'external' && t.roadmapRelevance !== 'Yes - External Roadmap') return false;
     if (selectedRoadmap === 'internal' && t.roadmapRelevance !== 'Yes - Internal Roadmap') return false;
-    if (!allRU  && !selectedRU.has(t.receivingUnit))   return false;
-    if (!allReq && !selectedReqU.has(t.requestingUnit)) return false;
+    if (!allSt && !selectedStatuses.has(t.status)) return false;
+    if (!allRU && !selectedRU.has(t.receivingUnit)) return false;
     return visibleCWs.some(cw => t.rtcd[cw]);
   });
 
@@ -3010,8 +3100,8 @@ function submitFilter() {
     `<span class="filter-chip">Year: ${[...selectedYears].sort().join(', ')}</span> ` +
     `<span class="filter-chip">Quarter: ${qLabel}</span> ` +
     `<span class="filter-chip">Roadmap: ${selectedRoadmap === 'all' ? 'All' : selectedRoadmap === 'external' ? 'External' : 'Internal'}</span> ` +
-    `<span class="filter-chip">Receiving Unit: ${selectedRU.size === allRUValues.length ? 'All' : selectedRU.size + ' selected'}</span> ` +
-    `<span class="filter-chip">Requesting Unit: ${selectedReqU.size === allReqValues.length ? 'All' : selectedReqU.size + ' selected'}</span>`;
+    `<span class="filter-chip">Status: ${allSt ? 'All' : selectedStatuses.size + ' selected'}</span> ` +
+    `<span class="filter-chip">Receiving Unit: ${allRU ? 'All' : selectedRU.size + ' selected'}</span>`;
 
   // KPIs
   let totalDelays = 0, maxDelays = 0;
@@ -3097,9 +3187,6 @@ function renderTable(tickets, cwCols) {
   const staticCols = [
     { cls:'col-key',  label:'Key',            sortKey:'key' },
     { cls:'col-sum',  label:'Summary',         sortKey:'summary' },
-    { cls:'col-stat', label:'Status',          sortKey:'status' },
-    { cls:'col-ru',   label:'Receiving Unit',  sortKey:'receivingUnit' },
-    { cls:'col-req',  label:'Requesting Unit', sortKey:'requestingUnit' },
     { cls:'col-del',  label:'#delays',         sortKey:'delays' },
   ];
   staticCols.forEach(c => {
@@ -3170,17 +3257,6 @@ function renderTable(tickets, cwCols) {
     const tdSum = document.createElement('td'); tdSum.className = 'col-sum';
     tdSum.title = t.summary; tdSum.textContent = t.summary; row.appendChild(tdSum);
 
-    const tdStat = document.createElement('td'); tdStat.className = 'col-stat';
-    const badge = document.createElement('span'); badge.className = 'status-badge';
-    badge.style.cssText = statusColor(t.status); badge.textContent = t.status || '—';
-    tdStat.appendChild(badge); row.appendChild(tdStat);
-
-    const tdRU = document.createElement('td'); tdRU.className = 'col-ru';
-    tdRU.title = t.receivingUnit; tdRU.textContent = t.receivingUnit || ''; row.appendChild(tdRU);
-
-    const tdReq = document.createElement('td'); tdReq.className = 'col-req';
-    tdReq.title = t.requestingUnit; tdReq.textContent = t.requestingUnit || ''; row.appendChild(tdReq);
-
     const rd = rangeDelaysOf(t);
     const tdDel = document.createElement('td'); tdDel.className = 'col-del'; tdDel.style.textAlign = 'center';
     if (rd > 0) { const sp = document.createElement('span'); sp.className = 'delays-num'; sp.textContent = rd; tdDel.appendChild(sp); }
@@ -3230,7 +3306,7 @@ function exportCSV() {
   });
 
   const esc = v => { const s = v==null?'':String(v); return s.includes(',')||s.includes('"')||s.includes('\n') ? '"'+s.replace(/"/g,'""')+'"' : s; };
-  const headers = ['Key','Summary','Status','Receiving Unit','Requesting Unit','#delays',...lastCwCols];
+  const headers = ['Key','Summary','#delays',...lastCwCols];
   const rows = [headers.map(esc).join(',')];
   sorted.forEach(t => {
     let pv = null, isF = true;
@@ -3241,7 +3317,7 @@ function exportCSV() {
       if (e.value !== pv) { pv = e.value; return e.value; }
       return '';
     });
-    rows.push([t.key,t.summary,t.status,t.receivingUnit,t.requestingUnit,rdOf(t),...cwVals].map(esc).join(','));
+    rows.push([t.key,t.summary,rdOf(t),...cwVals].map(esc).join(','));
   });
 
   const blob = new Blob(['﻿' + rows.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
@@ -3253,9 +3329,32 @@ function exportCSV() {
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', () => { init(); initTopScrollbar(); });
 } else {
-  init();
+  init(); initTopScrollbar();
+}
+function initTopScrollbar() {
+  const top  = document.getElementById('tableScrollTop');
+  const inner = document.getElementById('tableScrollTopInner');
+  const wrap = document.getElementById('tableWrap');
+  if (!top || !inner || !wrap) return;
+
+  function syncWidth() {
+    const table = wrap.querySelector('.pivot-table');
+    inner.style.width = table ? table.scrollWidth + 'px' : '0px';
+  }
+
+  let ticking = false;
+  top.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(() => { wrap.scrollLeft = top.scrollLeft; ticking = false; }); ticking = true; }
+  });
+  wrap.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(() => { top.scrollLeft = wrap.scrollLeft; ticking = false; }); ticking = true; }
+  });
+
+  const ro = new ResizeObserver(syncWidth);
+  ro.observe(wrap);
+  syncWidth();
 }
 </script>
 </body>
